@@ -26,7 +26,6 @@ music = os.listdir(music_path)
 
 # set the size of interface
 pygame.display.set_mode([300,300])
-# # 设置打开界面的关闭方法，没有的话打开的界面没法关闭。
 
 while True:
     for event in pygame.event.get():
