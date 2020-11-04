@@ -36,8 +36,12 @@ while True:
     if pygame.mixer.music.get_busy() == False:
         order = random.randint(0, len(music) - 1)
         
+        # method 1:
         os.chdir(music_path)
-        
         pygame.mixer.music.load(music[order])
+        
+        # method 2:
+        # pygame.mixer.music.load(music_path + music[order])
+        
         # play music
         pygame.mixer.music.play()
