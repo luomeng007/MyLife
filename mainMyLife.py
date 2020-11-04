@@ -50,6 +50,7 @@ class MainGame:
         # we also could leave out it here
         m.playMusic()
 
+        
 class Music:
     def __init__(self, music):
         # use self.music store music we want to play
