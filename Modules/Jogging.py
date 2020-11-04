@@ -8,41 +8,43 @@ Created on Tue Nov  3 15:35:42 2020
 import speech
 import time
 import numpy as np
+import random
+# if two files are not in a common directory, we need to add sentence as below
+import sys
+sys.path.append(r"D:/User(origin in C)/desktop/MyLife-main/Modules/")
+import remindMessage
 
 
 class Debug:
     def __init__(self):
         self.start_time = time.time()
-        
+
         self.flag = True
-        
+
         self.minutes = 20
-        
+
         self.timestamp = np.arange(self.minutes) + 1
-        
-        self.message = ["Eine Minute verging", "Zwei Minuten vergingen", "Drei Minuten vergingen", "Vier Minuten vergingen",
-                        "Fünf Minuten vergingen", "Sechs Minuten vergingen", "Sieben Minuten vergingen", "Acht Minuten vergingen",
-                        "Neu Minuten vergingen", "Zehn Minuten vergingen", "Elf Minuten vergingen", "Zwölf Minuten vergingen",
-                        "dreizehn Minuten vergingen", "vierzehn Minuten vergingen", "fünfzehn Minuten vergingen", "Sechszehn Minuten vergingen",
-                        "Siebzehn Minuten vergingen", "Achtzehn Minuten vergingen", "Neunzehn Minuten vergingen", "Zwanzig Minuten vergingen"]
-        
+
+        self.message = remindMessage.message
+
     def mainProgram(self):
         self.remindMessage()
-        
+
+
     def remindMessage(self):
-        speech.say("los geht's")
-        
+        speech.say("运动开始啦！")
+
         for i in range(self.minutes):
             while True:
                 if round(time.time() - self.start_time) == self.timestamp[i] * 60:
-                    speech.say(self.message[i])
+                    speech.say(self.message[i][random.randint(0, len(self.message[i]) - 1)])
                     break
-                
-        speech.say("Fertig!")
-        
+
+        speech.say("恭喜主人，完成运动!")
+
     def Gui(self):
         pass
-    
+
 
 if __name__ == "__main__":
     main = Debug()
