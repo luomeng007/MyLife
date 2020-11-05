@@ -12,6 +12,7 @@ import sys
 import os
 
 version = 'v1.01'
+COLOR_BLACK = (0, 0, 0)
 
 
 class MainGame:
@@ -33,21 +34,57 @@ class MainGame:
         # play background music
         self.playaBackgroundMusic()
 
+        # the three button on main scene
+        self.button1 = None
+        self.button2 = None
+        self.button3 = None
+
     def mainGame(self):
         # main loop of game
         while True:
             # fill the window with whole black canvas
             # MainGame.window.fill(pygame.Color(0, 0, 0))
             # wait for click to exit game
-            self.exitGame()
+            self.startGame()
             # display selecting buttons on main scene
             self.displayButton()
             # update display or we could not see anything
             pygame.display.update()
 
     # define a exit method of game
-    def exitGame(self):
+    def startGame(self):
         for event in pygame.event.get():
+            # when click quit button, quit game
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            # judge the mouse button is clicked
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if self.button1.collidepoint(pygame.mouse.get_pos()):
+                    print(pygame.mouse.get_pos())
+                    # enter sub-loop
+                    while True:
+                        MainGame.window.fill(COLOR_BLACK)
+                        self.quitGame()
+                        pygame.display.update()
+                        # we could add new elements here
+
+                if self.button2.collidepoint(pygame.mouse.get_pos()):
+                    while True:
+                        MainGame.window.fill(COLOR_BLACK)
+                        self.quitGame()
+                        pygame.display.update()
+
+                if self.button3.collidepoint(COLOR_BLACK):
+                    while True:
+                        MainGame.window.fill(COLOR_BLACK)
+                        self.quitGame()
+                        pygame.display.update()
+
+    def quitGame(self):
+        for event in pygame.event.get():
+            # when click quit button, quit game
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -61,7 +98,9 @@ class MainGame:
 
     def displayButton(self):
         b = Button(200, 100)
-        b.displayButton()
+        self.button1, self.button2, self.button3 = b.displayButton()
+        # debug
+        # print(self.button1)
 
 
 class Music:
@@ -97,9 +136,11 @@ class Button:
 
     def displayButton(self):
         MainGame.window.blit(self.images["title"], (self.left, self.top))
-        MainGame.window.blit(self.images["start"], (self.left1, self.top1))
-        MainGame.window.blit(self.images["setting"], (self.left1, self.top1 + 120))
-        MainGame.window.blit(self.images["quit"], (self.left1, self.top1 + 240))
+        button1 = MainGame.window.blit(self.images["start"], (self.left1, self.top1))
+        button2 = MainGame.window.blit(self.images["setting"], (self.left1, self.top1 + 120))
+        button3 = MainGame.window.blit(self.images["quit"], (self.left1, self.top1 + 240))
+
+        return button1, button2, button3
 
 
 # execute program
