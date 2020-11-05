@@ -1,0 +1,6 @@
+The current modules we have:
+	Jogging.py：remind player jogging time
+	musicPlayer.py: random play music by using pygame module
+	remindSitLong.py：remind people do not sit too long during work or study.
+	
+	
