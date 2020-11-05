@@ -43,7 +43,7 @@ class MainGame:
         # main loop of game
         while True:
             # fill the window with whole black canvas
-            # MainGame.window.fill(pygame.Color(0, 0, 0))
+            # MainGame.window.fill(COLOR_BLACK)
             # wait for click to exit game
             self.startGame()
             # display selecting buttons on main scene
@@ -76,7 +76,7 @@ class MainGame:
                         self.quitGame()
                         pygame.display.update()
 
-                if self.button3.collidepoint(COLOR_BLACK):
+                if self.button3.collidepoint(pygame.mouse.get_pos()):
                     while True:
                         MainGame.window.fill(COLOR_BLACK)
                         self.quitGame()
