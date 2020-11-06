@@ -11,7 +11,7 @@ import pygame
 import sys
 import os
 
-version = 'v1.02'
+version = 'v1.04'
 COLOR_BLACK = (0, 0, 0)
 
 
@@ -39,11 +39,11 @@ class MainGame:
         self.button2 = None
         self.button3 = None
 
-        # setting button
-        self.button_s1 = None
+        # setting button list
+        self.setting_button_list = None
 
         # set flag
-        self.flag_s1 = "open"
+        self.flag_list = ["open", "open", "open"]
 
     def mainGame(self):
         # main loop of game
@@ -82,7 +82,7 @@ class MainGame:
                     MainGame.window.fill(COLOR_BLACK)
                     while True:
                         # add setting button
-                        self.displaySettingButton(self.flag_s1)
+                        self.displaySettingButton(self.flag_list)
                         self.changeSettingButton()
                         pygame.display.update()
                         # we could have music setting, full screen display here or something else
@@ -119,9 +119,9 @@ class MainGame:
         # debug
         # print(self.button1) # will get a rect object
 
-    def displaySettingButton(self, flag):
+    def displaySettingButton(self, flag_list):
         b = Button()
-        self.button_s1 = b.displaySettingButton(200, 100, flag)
+        self.setting_button_list = b.displaySettingButton(353, 100, flag_list)
 
     def changeSettingButton(self):
         for event in pygame.event.get():
@@ -130,13 +130,29 @@ class MainGame:
                 self.exitGame()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if self.button_s1.collidepoint(pygame.mouse.get_pos()):
-                    if self.flag_s1 == "open":
-                        self.flag_s1 = "close"
-                        self.displaySettingButton(self.flag_s1)
+                if self.setting_button_list[0].collidepoint(pygame.mouse.get_pos()):
+                    if self.flag_list[0] == "open":
+                        self.flag_list[0] = "close"
+                        self.displaySettingButton(self.flag_list)
                     else:
-                        self.flag_s1 = "open"
-                        self.displaySettingButton(self.flag_s1)
+                        self.flag_list[0] = "open"
+                        self.displaySettingButton(self.flag_list)
+
+                if self.setting_button_list[1].collidepoint(pygame.mouse.get_pos()):
+                    if self.flag_list[1] == "open":
+                        self.flag_list[1] = "close"
+                        self.displaySettingButton(self.flag_list)
+                    else:
+                        self.flag_list[1] = "open"
+                        self.displaySettingButton(self.flag_list)
+
+                if self.setting_button_list[2].collidepoint(pygame.mouse.get_pos()):
+                    if self.flag_list[2] == "open":
+                        self.flag_list[2] = "close"
+                        self.displaySettingButton(self.flag_list)
+                    else:
+                        self.flag_list[2] = "open"
+                        self.displaySettingButton(self.flag_list)
 
 
 class Music:
@@ -166,7 +182,11 @@ class Button:
 
         self.setting_images = {
             "open": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/打开状态.png"),
-            "close": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/关闭状态.png")
+            "close": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/关闭状态.png"),
+            "title": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/游戏设置分.png"),
+            "music": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/背景音乐.png"),
+            "key_press": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/按键音效.png"),
+            "full_screen": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/全屏显示.png")
         }
 
     def displayMainSceneButton(self, left, top):
@@ -179,13 +199,35 @@ class Button:
 
         return button1, button2, button3
 
-    def displaySettingButton(self, left, top, flag):
-        if flag == "open":
-            button1 = MainGame.window.blit(self.setting_images["open"], (left, top))
-            return button1
-        if flag == "close":
-            button2 = MainGame.window.blit(self.setting_images["close"], (left, top))
-            return button2
+    def displaySettingButton(self, left, top, flag_list):
+        # every time execute this part, clean setting_button_list first
+        setting_button_list = []
+        left1 = left + 30
+        top1 = top + 200
+        MainGame.window.blit(self.setting_images["title"], (left, top))
+        MainGame.window.blit(self.setting_images["music"], (left1, top1))
+        MainGame.window.blit(self.setting_images["key_press"], (left1, top1 + 100))
+        MainGame.window.blit(self.setting_images["full_screen"], (left1, top1 + 200))
+        if flag_list[0] == "open":
+            button1 = MainGame.window.blit(self.setting_images["open"], (left1 + 180, top1))
+            setting_button_list.append(button1)
+        if flag_list[0] == "close":
+            button1 = MainGame.window.blit(self.setting_images["close"], (left1 + 180, top1))
+            setting_button_list.append(button1)
+        if flag_list[1] == "open":
+            button2 = MainGame.window.blit(self.setting_images["open"], (left1 + 180, top1 + 100))
+            setting_button_list.append(button2)
+        if flag_list[1] == "close":
+            button2 = MainGame.window.blit(self.setting_images["close"], (left1 + 180, top1 + 100))
+            setting_button_list.append(button2)
+        if flag_list[2] == "open":
+            button3 = MainGame.window.blit(self.setting_images["open"], (left1 + 180, top1 + 200))
+            setting_button_list.append(button3)
+        if flag_list[2] == "close":
+            button3 = MainGame.window.blit(self.setting_images["close"], (left1 + 180, top1 + 200))
+            setting_button_list.append(button3)
+
+        return setting_button_list
 
 
 # execute program
