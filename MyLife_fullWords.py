@@ -13,13 +13,13 @@ import numpy as np
 
 class MainGame:
     if not os.path.exists("C:/Users/15025/Desktop/data.txt"):
-        attribute_list = [0, 0, 0]
+        attribute_list = [0, 0, 0, 0]
     else:
         with open("C:/Users/15025/Desktop/data.txt", 'r') as f:
             data_list = f.readlines()
             new_data_list = []
             for data in data_list:
-                new_data_list.append(int(data.rstrip()))
+                new_data_list.append(float(data.rstrip()))
             attribute_list = new_data_list
     
     def __init__(self):
@@ -31,20 +31,24 @@ class MainGame:
             print("请您选择，提示：请输入序号1, 2或者3")
             print("1. 慢跑")
             print("2. 学习")
-            print("3. 清洁")
-            print("4.查看当前属性值")
+            print("3. 冥想")
+            print("4. 清洁")
+            print("5. 查看当前属性值")
             choice = input("您的决定: ")
             print("")
             if choice == "1":
                 j = Jogging()
-                self.healthy = j.mainProgram()
+                j.mainProgram()
             elif choice == "2":
                 s = Study()
-                self.academy = s.mainProgram()
+                s.mainProgram()
             elif choice == "3":
-                c = Cleaning()
-                self.cleaning = c.mainProgram()
+                m = Meditation()
+                m.mainProgram()
             elif choice == "4":
+                c = Cleaning()
+                c.mainProgram()
+            elif choice == "5":
                 self.displayData()
             else:
                 print("您的输入值有误，请重新输入！提示：输入数字1,2或者3")
@@ -56,13 +60,15 @@ class MainGame:
         print('-'*18+'玩家当前属性 ' + '-' * 18)
         print('健康值:'.ljust(20)+ '|' + '{0}'.format(MainGame.attribute_list[0]).rjust(28))
         print('学术值:'.ljust(20)+ '|' + '{0}'.format(MainGame.attribute_list[1]).rjust(28))
-        print('清洁值:'.ljust(20)+ '|' + '{0}'.format(MainGame.attribute_list[2]).rjust(28))
+        print('精神值:'.ljust(20)+ '|' + '{0}'.format(MainGame.attribute_list[2]).rjust(28))
+        print('清洁值:'.ljust(20)+ '|' + '{0}'.format(MainGame.attribute_list[3]).rjust(28))
         
     def saveData(self):
         with open("C:/Users/15025/Desktop/data.txt", "w+") as f:
             f.write(str(MainGame.attribute_list[0]) + '\n')
             f.write(str(MainGame.attribute_list[1]) + '\n')
             f.write(str(MainGame.attribute_list[2]) + '\n')
+            f.write(str(MainGame.attribute_list[3]) + '\n')
             
             
 class Jogging:
@@ -110,13 +116,14 @@ class Study:
             self.choice = input("您的决定: ")
             print("")
             if self.choice == "1":
-                self.total_time = 1 * 60
+                self.total_time = 20 * 60
                 break
             elif self.choice == "2":
                 self.total_time = 50 * 60
                 break
             else:
                 print("您的输入值有误，请重新输入！提示：输入数字1或者2")
+                continue
         
         self.start_time = time.time()
     
@@ -134,8 +141,35 @@ class Study:
         speech.say("fertig!")
         print("学习完成！")
         
-        MainGame.attribute_list[1] += 1
+        if self.choice == "1":
+            MainGame.attribute_list[1] += 0.5
+        if self.choice == "2":
+            MainGame.attribute_list[1] += 1
         
+
+class Meditation:
+    def __init__(self):
+        self.start_time = time.time()
+        
+        self.minutes = 20
+        
+        self.timestamp = np.arange(self.minutes) + 1
+
+    def mainGame(self):
+        print("开始冥想！")
+        speech.say("los geht's")
+        
+        for i in range(self.minutes):
+            while True:
+                if round(time.time() - self.start_time) == self.timestamp[i] * 60:
+                    print(f"已经过去了{i + 1}分钟")
+                    break
+                
+        speech.say("Fertig!")
+        print("冥想结束!")
+        
+        MainGame.attribute_list[2] += 1
+
 
 class Cleaning:
     def __init__(self):
@@ -158,7 +192,7 @@ class Cleaning:
         speech.say("Fertig!")
         print("清洁结束!")
         
-        MainGame.attribute_list[2] += 1
+        MainGame.attribute_list[3] += 1
         
     
 if __name__ == "__main__":
