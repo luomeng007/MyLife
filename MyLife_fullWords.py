@@ -116,10 +116,10 @@ class Study:
             self.choice = input("您的决定: ")
             print("")
             if self.choice == "1":
-                self.total_time = 20 * 60
+                self.total_time = 30 * 60
                 break
             elif self.choice == "2":
-                self.total_time = 50 * 60
+                self.total_time = 60 * 60
                 break
             else:
                 print("您的输入值有误，请重新输入！提示：输入数字1或者2")
@@ -142,9 +142,9 @@ class Study:
         print("学习完成！")
         
         if self.choice == "1":
-            MainGame.attribute_list[1] += 0.5
+            MainGame.attribute_list[1] += 0.25
         if self.choice == "2":
-            MainGame.attribute_list[1] += 1
+            MainGame.attribute_list[1] += 0.5
         
 
 class Meditation:
