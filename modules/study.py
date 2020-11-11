@@ -14,7 +14,7 @@ class Study:
             self.choice = input("您的决定: ")
             print("")
             if self.choice == "1":
-                self.total_time = 3
+                self.total_time = 30 * 60
                 break
             elif self.choice == "2":
                 self.total_time = 60 * 60
@@ -60,7 +60,7 @@ class Study:
         print("学习完成！")
 
         if self.choice == "1":
-            self.time_total_study += 8
+            self.time_total_study += 0.5
         if self.choice == "2":
             self.time_total_study += 1
 
