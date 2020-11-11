@@ -96,7 +96,7 @@ class Jogging:
 
         self.flag = True
 
-        self.minutes = 1
+        self.minutes = 20
 
         self.timestamp = np.arange(self.minutes) + 1
 
