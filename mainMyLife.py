@@ -5,11 +5,14 @@ Created on Wed Nov  4 19:29:04 2020
 @author: 15025
 
 main program of game---My Life
+
+this structure only suits simple program. It is not useful to do so
 """
 
 import pygame
 import sys
 import os
+import time
 
 version = 'v1.04'
 COLOR_BLACK = (0, 0, 0)
@@ -104,13 +107,13 @@ class MainGame:
 
     def playBackgroundMusic1(self):
         # create Music instance
-        m = Music(r"D:/User(origin in C)/desktop/MyLife_main/musics/诛仙1-草原.mp3")
+        m = Music(r"./musics/诛仙1-草原.mp3")
         # we need to give a parameter count here, but it has default value, so
         # we also could leave out it here
         m.playMusic()
 
     def playBackgroundMusic2(self):
-        m = Music(r"D:/User(origin in C)/desktop/MyLife_main/musics/逍遥传说.mp3")
+        m = Music(r"./musics/逍遥传说.mp3")
         m.playMusic()
 
     def displayMainSceneButton(self):
@@ -154,6 +157,9 @@ class MainGame:
                         self.flag_list[2] = "open"
                         self.displaySettingButton(self.flag_list)
 
+                if self.setting_button_list[3].collidepoint(pygame.mouse.get_pos()):
+                    break
+
 
 class Music:
     def __init__(self, music):
@@ -174,19 +180,20 @@ class Music:
 class Button:
     def __init__(self):
         self.main_scene_images = {
-            "title": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/游戏名称.png"),
-            "start": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/开始游戏.png"),
-            "setting": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/游戏设置.png"),
-            "quit": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/退出游戏.png")
+            "title": pygame.image.load(r"./materials/游戏名称.png"),
+            "start": pygame.image.load(r"./materials/开始游戏.png"),
+            "setting": pygame.image.load(r"./materials/游戏设置.png"),
+            "quit": pygame.image.load(r"./materials/退出游戏.png")
         }
 
         self.setting_images = {
-            "open": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/打开状态.png"),
-            "close": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/关闭状态.png"),
-            "title": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/游戏设置分.png"),
-            "music": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/背景音乐.png"),
-            "key_press": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/按键音效.png"),
-            "full_screen": pygame.image.load(r"D:/User(origin in C)/desktop/MyLife_main/materials/全屏显示.png")
+            "open": pygame.image.load(r"./materials/打开状态.png"),
+            "close": pygame.image.load(r"./materials/关闭状态.png"),
+            "title": pygame.image.load(r"./materials/游戏设置分.png"),
+            "music": pygame.image.load(r"./materials/背景音乐.png"),
+            "key_press": pygame.image.load(r"./materials/按键音效.png"),
+            "full_screen": pygame.image.load(r"./materials/全屏显示.png"),
+            "return": pygame.image.load(r"./materials/返回主菜单.png")
         }
 
     def displayMainSceneButton(self, left, top):
@@ -208,6 +215,7 @@ class Button:
         MainGame.window.blit(self.setting_images["music"], (left1, top1))
         MainGame.window.blit(self.setting_images["key_press"], (left1, top1 + 100))
         MainGame.window.blit(self.setting_images["full_screen"], (left1, top1 + 200))
+        button4 = MainGame.window.blit(self.setting_images["return"], (left1 + 60, top1 + 300))
         if flag_list[0] == "open":
             button1 = MainGame.window.blit(self.setting_images["open"], (left1 + 180, top1))
             setting_button_list.append(button1)
@@ -226,6 +234,8 @@ class Button:
         if flag_list[2] == "close":
             button3 = MainGame.window.blit(self.setting_images["close"], (left1 + 180, top1 + 200))
             setting_button_list.append(button3)
+
+        setting_button_list.append(button4)
 
         return setting_button_list
 
