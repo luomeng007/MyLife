@@ -1,5 +1,5 @@
 name,type,directory,left,top
 title,image,./materials/游戏名称.png,200,100
-start,image,./materials/开始游戏.png,380,320
-setting,image,./materials/游戏设置.png,380,440
-quit,image,./materials/退出游戏.png,380,560
+start,button,./materials/开始游戏.png,380,320
+setting,button,./materials/游戏设置.png,380,440
+quit,button,./materials/退出游戏.png,380,560
