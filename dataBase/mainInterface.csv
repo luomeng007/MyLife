@@ -1,5 +1,5 @@
 name,type,directory,left,top
-title,image,.\materials\ÓÎÏ·Ãû³Æ.png,200,100
-start,image,.\materials\¿ªÊ¼ÓÎÏ·.png,380,320
-setting,image,.\materials\ÓÎÏ·ÉèÖÃ.png,380,440
-quit,image,.\materials\ÍË³öÓÎÏ·.png,380,560
+title,image,./materials/æ¸¸æˆåç§°.png,200,100
+start,image,./materials/å¼€å§‹æ¸¸æˆ.png,380,320
+setting,image,./materials/æ¸¸æˆè®¾ç½®.png,380,440
+quit,image,./materials/é€€å‡ºæ¸¸æˆ.png,380,560
