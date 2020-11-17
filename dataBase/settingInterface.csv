@@ -2,7 +2,7 @@ name,type,directory,left,top
 title,image,./materials/游戏设置分.png,353,100
 music,image,./materials/背景音乐.png,383,300
 key_press,image,./materials/按键音效.png,383,400
-full_screen,image,./materials/全屏显示.png,383,500
+full_screen,button,./materials/全屏显示.png,383,500
 music_open_button,button,./materials/打开状态.png,563,300
 music_close_button,button,./materials/关闭状态.png,563,300
 key_press_open_button,button,./materials/打开状态.png,563,400
