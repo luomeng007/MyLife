@@ -1,0 +1,5 @@
+name,type,directory,left,top
+title,"""image""",r"./materials/游戏名称.png",200,100
+start,"""image""",r"./materials/开始游戏.png",380,320
+setting,"""image""",r"./materials/游戏设置.png",380,440
+quit,"""image""",r"./materials/退出游戏.png",380,560
