@@ -61,6 +61,7 @@ class MainGame:
 
                     if self.button_list[1].collidepoint(pygame.mouse.get_pos()):
                         MainGame.window.fill(COLOR_BLACK)
+                        pygame.display.update()
                         flag = True
                         while flag:
                             for event1 in pygame.event.get():
@@ -68,8 +69,9 @@ class MainGame:
                                     pygame.quit()
                                     sys.exit()
                                 if event1.type == pygame.MOUSEBUTTONDOWN:
-                                    if self.button_list_setting[3].collidepoint(pygame.mouse.get_pos()):
+                                    if self.button_list_setting[7].collidepoint(pygame.mouse.get_pos()):
                                         flag = False
+                                        pass
                             self.displaySettingInterface()
                             pygame.display.update()
 
