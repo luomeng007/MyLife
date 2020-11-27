@@ -71,6 +71,7 @@ class MainGame:
                 print("您的输入值有误，请重新输入！提示：输入数字1,2或者3")
                 continue
 
+            # 循环保存效率并不高
             self.save_data()
 
     @staticmethod
