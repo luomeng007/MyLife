@@ -1,0 +1,11 @@
+name,type,directory,left,top
+character,image,./materials/机器猫.png,100,100
+jogging,button,./materials/慢跑.png,500,150
+study,image,./materials/学习.png,500,200
+meditation,button,./materials/冥想.png,500,250
+cleaning,button,./materials/清洁.png,500,300
+check_attribute,button,./materials/查看属性.png,500,350
+up,image,./materials/上箭头.png,630,186
+down,image,./materials/下箭头.png,630,214
+time30,button,./materials/30分钟悬停.png,680,175
+time60,button,./materials/60分钟.png,680,225
