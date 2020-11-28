@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+message_1_minute = ["Eine Minute verging"]
+message_2_minute = ["Zwei Minuten vergingen"]
+message_3_minute = ["Drei Minuten vergingen"]
+message_4_minute = ["Vier Minuten vergingen"]
+message_5_minute = ["Fünf Minuten vergingen"]
+message_6_minute = ["Sechs Minuten vergingen"]
+message_7_minute = ["Sieben Minuten vergingen"]
+message_8_minute = ["Acht Minuten vergingen"]
+message_9_minute = ["Neu Minuten vergingen"]
+message_10_minute = ["Zehn Minuten vergingen"]
+message_11_minute = ["Elf Minuten vergingen"]
+message_12_minute = ["Zwölf Minuten vergingen"]
+message_13_minute = ["dreizehn Minuten vergingen"]
+message_14_minute = ["vierzehn Minuten vergingen"]
+message_15_minute = ["fünfzehn Minuten vergingen"]
+message_16_minute = ["Sechszehn Minuten vergingen"]
+message_17_minute = ["Siebzehn Minuten vergingen"]
+message_18_minute = ["Achtzehn Minuten vergingen"]
+message_19_minute = ["Neunzehn Minuten vergingen"]
+message_20_minute = ["Zwanzig Minuten vergingen"]
+message = [message_1_minute, message_2_minute, message_3_minute, message_4_minute, message_5_minute, message_6_minute,
+           message_7_minute, message_8_minute, message_9_minute, message_10_minute, message_11_minute,
+           message_12_minute, message_13_minute, message_14_minute, message_15_minute, message_16_minute,
+           message_17_minute, message_18_minute, message_19_minute, message_20_minute]
