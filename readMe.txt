@@ -7,6 +7,9 @@ We hope by playing this game, every player can live a better life in the future.
   
 At the beginning, this game is only designed for Chinese player, later when we have time, we may develope it for players from other countries.
 
+使用方法：
+	将所有喜欢的音乐放入gameMusics目录下就可以在打扫的时候自动播放了，其他模式属于安静模式，暂不支持歌曲播放
+
 主要逻辑：
 	1.所有的限制每日进行更新
 	2.所有的目标只要达到则对应目标值对应的分数
